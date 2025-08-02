@@ -12,7 +12,6 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { 
-  BarChart3, 
   Link2, 
   Users, 
   Bot,
@@ -20,7 +19,6 @@ import {
 } from "lucide-react";
 
 const navigationItems = [
-  { title: "Analytics", url: "/dashboard", icon: BarChart3 },
   { title: "Links", url: "/dashboard/links", icon: Link2 },
   { title: "Users", url: "/dashboard/users", icon: Users },
   { title: "Status", url: "/dashboard/status", icon: Activity },
@@ -33,9 +31,6 @@ export function AppSidebar() {
   const isCollapsed = state === "collapsed";
 
   const isActive = (path: string) => {
-    if (path === "/dashboard") {
-      return currentPath === "/dashboard";
-    }
     return currentPath.startsWith(path);
   };
 

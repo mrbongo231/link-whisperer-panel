@@ -6,7 +6,6 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import { LoginPage } from "./components/LoginPage";
 import { DashboardLayout } from "./components/DashboardLayout";
-import { Dashboard } from "./pages/Dashboard";
 import { LinksPage } from "./pages/LinksPage";
 import { UsersPage } from "./pages/UsersPage";
 import { StatusPage } from "./pages/StatusPage";
@@ -29,13 +28,6 @@ const App = () => (
           <BrowserRouter>
             <Routes>
               <Route path="/login" element={<LoginPageWrapper />} />
-              <Route path="/dashboard" element={
-                <ProtectedRoute>
-                  <DashboardLayout>
-                    <Dashboard />
-                  </DashboardLayout>
-                </ProtectedRoute>
-              } />
               <Route path="/dashboard/links" element={
                 <ProtectedRoute>
                   <DashboardLayout>
@@ -57,7 +49,8 @@ const App = () => (
                   </DashboardLayout>
                 </ProtectedRoute>
               } />
-              <Route path="/" element={<Navigate to="/dashboard" replace />} />
+              <Route path="/" element={<Navigate to="/dashboard/links" replace />} />
+              <Route path="/dashboard" element={<Navigate to="/dashboard/links" replace />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
